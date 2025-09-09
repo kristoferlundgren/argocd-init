@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+  finalizers:
+    # https://argo-cd.readthedocs.io/en/latest/user-guide/app_deletion/#about-the-deletion-finalizer
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: infra
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  source:
+    # https://artifacthub.io/packages/helm/argo/argo-cd
+    repoURL: https://argoproj.github.io/argo-helm
+    targetRevision: '8.3.5'
+    chart: argo-cd
+    helm:
+      releaseName: argocd
+      valuesObject:
+        configs:
+          params:
+            application.namespaces: "*"
+          cm:
+            # https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/
+            # Read the security implications connected to enabling this feature.
+            exec.enabled: true
