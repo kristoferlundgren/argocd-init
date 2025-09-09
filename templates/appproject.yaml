@@ -21,6 +21,8 @@ metadata:
 spec:
   sourceRepos:
   - '*'
+  sourceNamespaces:
+  - infra
   destinations:
   - namespace: '*'
     server: '*'
