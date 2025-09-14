@@ -31,6 +31,7 @@ spec:
         configs:
           params:
             application.namespaces: "*"
+            controller.diff.server.side: true
           cm:
             # https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/
             # Read the security implications connected to enabling this feature.
