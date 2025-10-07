@@ -10,8 +10,8 @@ spec:
   sourceNamespaces: []
   destinations: []
   namespaceResourceBlacklist:
-  - group: '*'
-    kind: '*'
+    - group: '*'
+      kind: '*'
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
@@ -20,12 +20,13 @@ metadata:
   namespace: argocd
 spec:
   sourceRepos:
-  - '*'
+    - '*'
   sourceNamespaces:
-  - infra
+    - argocd
+    - infra
   destinations:
-  - namespace: '*'
-    server: '*'
+    - namespace: '*'
+      server: '*'
   clusterResourceWhitelist:
-  - group: '*'
-    kind: '*'
+    - group: '*'
+      kind: '*'
