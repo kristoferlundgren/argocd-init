@@ -13,3 +13,7 @@ kubectl apply -k templates
 kubens argocd
 argocd login --core
 argocd app list
+# Due to this ArgoCD issue, apps in other namespaces do no show when using login --core.
+#   https://github.com/argoproj/argo-cd/issues/16426
+# Pending PR:
+#   https://github.com/argoproj/argo-cd/pull/23115
