@@ -3,9 +3,11 @@ kind: Application
 metadata:
   name: argocd
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/compare-options: ServerSideDiff=true,IncludeMutationWebhook=true
   finalizers:
     # https://argo-cd.readthedocs.io/en/latest/user-guide/app_deletion/#about-the-deletion-finalizer
-    - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io/background
 spec:
   project: infra
   destination:
@@ -23,7 +25,7 @@ spec:
   source:
     # https://artifacthub.io/packages/helm/argo/argo-cd
     repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: '8.3.5'
+    targetRevision: '8.6.0'
     chart: argo-cd
     helm:
       releaseName: argocd
