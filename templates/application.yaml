@@ -9,7 +9,7 @@ metadata:
     # https://argo-cd.readthedocs.io/en/latest/user-guide/app_deletion/#about-the-deletion-finalizer
     - resources-finalizer.argocd.argoproj.io/background
 spec:
-  project: infra
+  project: argocd
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc

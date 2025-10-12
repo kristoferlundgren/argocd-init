@@ -16,14 +16,13 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: infra
+  name: argocd
   namespace: argocd
 spec:
   sourceRepos:
     - '*'
   sourceNamespaces:
     - argocd
-    - infra
   destinations:
     - namespace: '*'
       server: '*'
