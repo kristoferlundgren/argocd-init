@@ -38,3 +38,5 @@ spec:
             # https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/
             # Read the security implications connected to enabling this feature.
             exec.enabled: true
+        global:
+          addPrometheusAnnotations: true
