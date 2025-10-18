@@ -39,6 +39,7 @@ spec:
             # https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/
             # Read the security implications connected to enabling this feature.
             exec.enabled: true
+            # https://argo-cd.readthedocs.io/en/stable/user-guide/status-badge/
             statusbadge.enabled: true # Make app-status publicly accessible
         global:
           addPrometheusAnnotations: true
