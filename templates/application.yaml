@@ -42,7 +42,7 @@ spec:
             # Read the security implications connected to enabling this feature.
             exec.enabled: true
             # https://argo-cd.readthedocs.io/en/stable/user-guide/status-badge/
-            statusbadge.enabled: true # Make app-status publicly accessible
+            statusbadge.enabled: true # Make app-status available without authentication
         global:
           addPrometheusAnnotations: true
           networkPolicy:
