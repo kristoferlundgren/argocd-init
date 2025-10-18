@@ -42,3 +42,5 @@ spec:
             statusbadge.enabled: true # Make app-status publicly accessible
         global:
           addPrometheusAnnotations: true
+          networkPolicy:
+            create: true
