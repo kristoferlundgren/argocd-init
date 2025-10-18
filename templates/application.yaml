@@ -47,3 +47,27 @@ spec:
           addPrometheusAnnotations: true
           networkPolicy:
             create: true
+        controller:
+          metrics:
+            enabled: true
+        dex:
+          metrics:
+            enabled: true
+        redis:
+          metrics:
+            enabled: true
+        server:
+          metrics:
+            enabled: true
+        repoServer:
+          metrics:
+            enabled: true
+        applicationSet:
+          metrics:
+            enabled: true
+        notifications:
+          metrics:
+            enabled: true
+        commitServer:
+          metrics:
+            enabled: true
