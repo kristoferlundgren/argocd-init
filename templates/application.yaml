@@ -34,7 +34,7 @@ spec:
           params:
             application.namespaces: "*"
             controller.diff.server.side: true
-            controller.sync.timeout.seconds: "3600"
+            controller.sync.timeout.seconds: "900" # 15 min
           cm:
             # https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/
             # Read the security implications connected to enabling this feature.
