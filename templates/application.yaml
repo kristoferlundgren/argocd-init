@@ -36,6 +36,8 @@ spec:
             controller.diff.server.side: true
             controller.sync.timeout.seconds: "900" # 15 min
           cm:
+            # https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#disable-admin-user
+            admin.enabled: true
             # https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/
             # Read the security implications connected to enabling this feature.
             exec.enabled: true
