@@ -25,7 +25,7 @@ spec:
   source:
     # https://artifacthub.io/packages/helm/argo/argo-cd
     repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: '8.6.0'
+    targetRevision: '9.0.1'
     chart: argo-cd
     helm:
       releaseName: argocd
