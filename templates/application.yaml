@@ -41,6 +41,8 @@ spec:
             # https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/
             # Read the security implications connected to enabling this feature.
             exec.enabled: true
+            # Timeout to discover if a new manifests version got published to the repository (s).
+            timeout.reconciliation: 60
             # https://argo-cd.readthedocs.io/en/stable/user-guide/status-badge/
             statusbadge.enabled: true # Make app-status available without authentication
         global:
