@@ -45,6 +45,7 @@ spec:
             application.namespaces: "*"
             controller.diff.server.side: true
             controller.sync.timeout.seconds: "900" # 15 min
+            hydrator.enabled: "true"
         global:
           addPrometheusAnnotations: true
           networkPolicy:
@@ -73,5 +74,6 @@ spec:
           metrics:
             enabled: true
         commitServer:
+          enabled: true
           metrics:
             enabled: true
