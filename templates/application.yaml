@@ -31,10 +31,6 @@ spec:
       releaseName: argocd
       valuesObject:
         configs:
-          params:
-            application.namespaces: "*"
-            controller.diff.server.side: true
-            controller.sync.timeout.seconds: "900" # 15 min
           cm:
             # https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#disable-admin-user
             admin.enabled: true
@@ -45,10 +41,16 @@ spec:
             timeout.reconciliation: 60
             # https://argo-cd.readthedocs.io/en/stable/user-guide/status-badge/
             statusbadge.enabled: true # Make app-status available without authentication
+          params:
+            application.namespaces: "*"
+            controller.diff.server.side: true
+            controller.sync.timeout.seconds: "900" # 15 min
         global:
           addPrometheusAnnotations: true
           networkPolicy:
             create: true
+        #---
+        # Metrix
         controller:
           metrics:
             enabled: true
