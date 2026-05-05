@@ -1,5 +1,5 @@
 ---
-# Effectively disable the "default" ArgoCD project
+# Effectively disable the "default" ArgoCD project (cannot be removed)
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
@@ -10,6 +10,9 @@ spec:
   sourceNamespaces: []
   destinations: []
   namespaceResourceBlacklist:
+    - group: '*'
+      kind: '*'
+  clusterResourceBlacklist:
     - group: '*'
       kind: '*'
 ---
