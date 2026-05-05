@@ -45,13 +45,16 @@ spec:
             application.namespaces: "*"
             controller.diff.server.side: true
             controller.sync.timeout.seconds: "900" # 15 min
+            # https://argo-cd.readthedocs.io/en/stable/user-guide/source-hydrator/#enabling-the-source-hydrator
             hydrator.enabled: "true"
+            # https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Git-File-Globbing/#enabling-the-new-globbing
+            applicationsetcontroller.enable.new.git.file.globbing: "true"
         global:
           addPrometheusAnnotations: true
           networkPolicy:
             create: true
         #---
-        # Metrix
+        # Metrics
         controller:
           metrics:
             enabled: true
