@@ -8,7 +8,7 @@ helm search repo argo/argo-cd --versions | head -6
 kubectl create namespace argocd
 ARGOCD_VERSION=$(grep "targetRevision:" templates/application.yaml | tr -cd "[:digit:].")
 helm template argocd --create-namespace -n argocd argo/argo-cd --version ${ARGOCD_VERSION} \
-  | kubectl apply -f -
+  | kubectl apply --server-side --force-conflicts -f -
 kubectl apply -k templates
 
 # Connect to and show status:
