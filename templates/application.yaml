@@ -30,6 +30,8 @@ spec:
     helm:
       releaseName: argocd
       valuesObject:
+        applicationSet:
+          allowAnyNamespace: true
         configs:
           cm:
             # https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#disable-admin-user
@@ -44,6 +46,11 @@ spec:
             statusbadge.enabled: true # Make app-status available without authentication
           params:
             application.namespaces: "*"
+            applicationsetcontroller.namespaces: "*"
+            # https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Appset-Any-Namespace/#scm-providers-secrets-consideration
+            applicationsetcontroller.enable.scm.providers: "false"
+            # https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Appset-Any-Namespace/#tokenref-restrictions
+            applicationsetcontroller.tokenref.strict.mode: "true"
             controller.diff.server.side: true
             controller.sync.timeout.seconds: "900" # 15 min
             # https://argo-cd.readthedocs.io/en/stable/user-guide/source-hydrator/#enabling-the-source-hydrator
