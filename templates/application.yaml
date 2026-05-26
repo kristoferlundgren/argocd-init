@@ -30,8 +30,6 @@ spec:
     helm:
       releaseName: argocd
       valuesObject:
-        applicationSet:
-          allowAnyNamespace: true
         configs:
           cm:
             # https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#disable-admin-user
@@ -79,6 +77,7 @@ spec:
           metrics:
             enabled: true
         applicationSet:
+          allowAnyNamespace: true
           metrics:
             enabled: true
         notifications:
