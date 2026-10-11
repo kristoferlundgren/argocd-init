@@ -1,0 +1,3 @@
+# https://mise.jdx.dev/configuration/settings.html
+[settings]
+env_file = ".env"

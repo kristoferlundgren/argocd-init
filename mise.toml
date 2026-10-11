@@ -1,0 +1,6 @@
+[tools]
+helm = "latest"
+kubectl = "latest"
+kubectx = "latest"
+kubens = "latest"
+argocd = "latest"
