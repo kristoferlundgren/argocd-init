@@ -6,8 +6,10 @@ helm search repo argo/argo-cd --versions | head -6
 
 # Install ArgoCD:
 kubectl create namespace argocd
-ARGOCD_VERSION=$(grep "targetRevision:" templates/application.yaml | tr -cd "[:digit:].")
+ARGOCD_VERSION=$(grep "targetRevision:" templates/Application.yaml | tr -cd "[:digit:].")
 helm template argocd --create-namespace -n argocd argo/argo-cd --version ${ARGOCD_VERSION} \
+  --set dex.containerSecurityContext.runAsUser=null \
+  --set redis.securityContext.runAsUser=null \
   | kubectl apply --server-side --force-conflicts -f -
 kubectl apply -k templates
 

@@ -68,9 +68,18 @@ spec:
           metrics:
             enabled: true
         dex:
+          # OpenShift restricted SCC assigns a namespace-scoped UID; do not
+          # pin Dex to the chart default UID (1001).
+          containerSecurityContext:
+            runAsUser: null
           metrics:
             enabled: true
         redis:
+          # OpenShift restricted SCC assigns a namespace-scoped UID; do not
+          # pin Redis to the chart default UID (999).
+          securityContext:
+            runAsUser: null
+          containerSecurityContext: {}
           metrics:
             enabled: true
         server:
