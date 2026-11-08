@@ -11,6 +11,7 @@ helm template argocd --create-namespace -n argocd argo/argo-cd --version ${ARGOC
   --set dex.containerSecurityContext.runAsUser=null \
   --set redis.securityContext.runAsUser=null \
   | kubectl apply --server-side --force-conflicts -f -
+kubectl wait --for=condition=Established --timeout=60s crd/appprojects.argoproj.io
 kubectl apply --force -k templates
 
 # Connect to and show status:
