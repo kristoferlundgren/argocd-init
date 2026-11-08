@@ -8,8 +8,7 @@ helm search repo argo/argo-cd --versions | head -6
 kubectl create namespace argocd
 ARGOCD_VERSION=$(grep "targetRevision:" templates/Application.yaml | tr -cd "[:digit:].")
 helm template argocd --create-namespace -n argocd argo/argo-cd --version ${ARGOCD_VERSION} \
-  --set dex.containerSecurityContext.runAsUser=null \
-  --set redis.securityContext.runAsUser=null \
+  --set openshift.enabled=false \
   | kubectl apply --server-side --force-conflicts -f -
 kubectl wait --for=condition=Established --timeout=60s crd/appprojects.argoproj.io
 kubectl apply --force -k templates
