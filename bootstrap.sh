@@ -11,7 +11,7 @@ helm template argocd --create-namespace -n argocd argo/argo-cd --version ${ARGOC
   --set dex.containerSecurityContext.runAsUser=null \
   --set redis.securityContext.runAsUser=null \
   | kubectl apply --server-side --force-conflicts -f -
-kubectl apply -k templates
+kubectl apply --force -k templates
 
 # Connect to and show status:
 kubens argocd
@@ -21,3 +21,9 @@ argocd app list
 #   https://github.com/argoproj/argo-cd/issues/16426
 # Pending PR:
 #   https://github.com/argoproj/argo-cd/pull/23115
+set +x
+echo ArgoCD sevice URL:
+echo "  https://argocd-server.argocd.svc.cluster.local/"
+echo ArgoCD "admin" password:
+printf '  '; kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d; printf '\n'
+echo
