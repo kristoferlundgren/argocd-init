@@ -30,3 +30,10 @@ The bootstrap script creates the namespace with `kubectl create namespace`;
 it is intended for initial setup and will fail if that namespace already
 exists. Argo CD then reconciles its own Helm release using the configured
 automated sync policy.
+
+## Security context
+
+The chart sets `openshift.enabled: false` for this OrbStack cluster, retaining
+the chart's standard security contexts. For OpenShift SCCs, set it to `true`
+and set `redis.securityContext.runAsUser: null`; the OpenShift flag does not
+change Redis's pod security context.

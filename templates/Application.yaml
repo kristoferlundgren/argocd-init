@@ -25,7 +25,7 @@ spec:
   source:
     # https://artifacthub.io/packages/helm/argo/argo-cd
     repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: '10.17.0'
+    targetRevision: "10.17.0"
     chart: argo-cd
     helm:
       releaseName: argocd
@@ -58,6 +58,8 @@ spec:
             hydrator.enabled: "true"
             # https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Git-File-Globbing/#enabling-the-new-globbing
             applicationsetcontroller.enable.new.git.file.globbing: "true"
+        openshift:
+          enabled: false
         global:
           addPrometheusAnnotations: true
           networkPolicy:
@@ -68,17 +70,9 @@ spec:
           metrics:
             enabled: true
         dex:
-          # OpenShift restricted SCC assigns a namespace-scoped UID; do not
-          # pin Dex to the chart default UID (1001).
-          containerSecurityContext:
-            runAsUser: null
           metrics:
             enabled: true
         redis:
-          # OpenShift restricted SCC assigns a namespace-scoped UID; do not
-          # pin Redis to the chart default UID (999).
-          securityContext:
-            runAsUser: null
           containerSecurityContext: {}
           metrics:
             enabled: true
