@@ -16,6 +16,7 @@ kubectl apply --force -k templates
 
 # Connect to and show status:
 kubens argocd
+kubectl -n argocd wait --for=condition=Available --timeout=60s deployment/argocd-server
 argocd login --core
 argocd app list
 # Due to this ArgoCD issue, apps in other namespaces do no show when using login --core.
